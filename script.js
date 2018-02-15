@@ -13,7 +13,7 @@ pickScissors.addEventListener('click', function() { playerPick('scissors') });
 
 var gameState = 'notStarted',
 	player = {
-		name: 'Robert',
+		name: '',
 		score: 0	
 	},
 	computer = {
@@ -35,6 +35,7 @@ function setGameElements() {
       break;
     case 'ended':
         newGameButton.innerText = 'Jeszcze raz';
+        
     case 'notStarted':
     default:
         newGameElement.style.display = 'block';
@@ -56,9 +57,14 @@ function newGame() {
 	if (player.name) {
 		player.score = computer.score = 0;
 		gameState = 'started';
+		playerPickElement.innerHTML = 'Player Selection' ;
+		computerPickElement.innerHTML = 'Computer Selection';
+		playerResultElement.innerHTML = 'Player Result';
+		computerResultElement.innerHTML = 'Computer result';
 		setGameElements();
 		
 		playerNameElement.innerHTML = player.name;
+
 		setGamePoints();
 	}
 
@@ -67,6 +73,7 @@ function newGame() {
 function endGame() {
 	gameState = 'ended'
 	setGameElements();
+
 
 	
 }
