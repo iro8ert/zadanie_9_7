@@ -26,6 +26,11 @@ var newGameElement = document.getElementById('js-newGameElement'),
 	pickElement = document.getElementById('js-playerPickElement'),
 	resultsElement = document.getElementById('js-resultsTableElement');
 
+function defaultResults() {
+	
+	playerPickElement.innerHTML;
+}
+
 function setGameElements() {
   switch(gameState) {
     case 'started':
@@ -35,7 +40,11 @@ function setGameElements() {
       break;
     case 'ended':
         newGameButton.innerText = 'Jeszcze raz';
-        
+        computerPickElement.innerHTML = '';
+		playerPickElement.innerHTML = '';
+		playerResultElement.innerHTML = '';
+		computerResultElement.innerHTML = '';
+                
     case 'notStarted':
     default:
         newGameElement.style.display = 'block';
@@ -48,7 +57,10 @@ setGameElements();
 
 var playerPointsElement = document.getElementById('js-playerPoints'),
 	playerNameElement = document.getElementById('js-playerName'),
+	playerSelection = document.getElementById('js-playerPick'), //dodane na chwile!!!
+	computerSelection = document.getElementById('js-computerPick'),
 	computerPointsElement = document.getElementById('js-computerPoints');
+
 
 
 
@@ -57,10 +69,7 @@ function newGame() {
 	if (player.name) {
 		player.score = computer.score = 0;
 		gameState = 'started';
-		playerPickElement.innerHTML = 'Player Selection' ;
-		computerPickElement.innerHTML = 'Computer Selection';
-		playerResultElement.innerHTML = 'Player Result';
-		computerResultElement.innerHTML = 'Computer result';
+		defaultResults();
 		setGameElements();
 		
 		playerNameElement.innerHTML = player.name;
@@ -71,7 +80,7 @@ function newGame() {
 }
 
 function endGame() {
-	gameState = 'ended'
+	gameState = 'ended';
 	setGameElements();
 
 
@@ -140,4 +149,6 @@ function setGamePoints() {
 		endGame();
 	}
 }
+
+var resetGame = ''
 
