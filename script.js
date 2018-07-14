@@ -81,6 +81,7 @@ function newGame() {
 
 function endGame() {
 	gameState = 'ended';
+	
 	setGameElements();
 
 
